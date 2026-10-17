@@ -1,0 +1,63 @@
+/* Orders report (MR_Orders) — [IcyCode_orders_table] from icycode-b2b */
+
+.mr-page--orders .mr-card {
+    padding: 20px;
+}
+
+/* Status badges: the plugin prints Bootstrap ".badge bg-*" */
+#b2bking_orders_table .badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+#b2bking_orders_table .badge.bg-success   { background: var(--mr-success-soft) !important; color: var(--mr-success) !important; }
+#b2bking_orders_table .badge.bg-danger    { background: var(--mr-primary-soft) !important; color: var(--mr-primary) !important; }
+#b2bking_orders_table .badge.bg-warning   { background: var(--mr-warning-soft) !important; color: var(--mr-warning) !important; }
+#b2bking_orders_table .badge.bg-info,
+#b2bking_orders_table .badge.bg-primary   { background: var(--mr-info-soft) !important; color: var(--mr-info) !important; }
+#b2bking_orders_table .badge.bg-secondary,
+#b2bking_orders_table .badge.bg-dark,
+#b2bking_orders_table .badge.bg-light     { background: var(--mr-surface-alt) !important; color: var(--mr-text-muted) !important; }
+
+/* Row actions */
+#b2bking_orders_table .btn {
+    padding: 5px 12px;
+    border-radius: var(--mr-radius-sm);
+    font-size: .82rem;
+    font-weight: 600;
+}
+
+#b2bking_orders_table .btn-primary {
+    border-color: var(--mr-primary);
+    background: var(--mr-primary);
+    color: #fff;
+}
+
+#b2bking_orders_table .btn-primary:hover {
+    border-color: var(--mr-primary-dark);
+    background: var(--mr-primary-dark);
+}
+
+#b2bking_orders_table .btn-outline-secondary {
+    border-color: var(--mr-border);
+    background: var(--mr-surface);
+    color: var(--mr-text);
+}
+
+#b2bking_orders_table .btn-outline-secondary:hover {
+    border-color: var(--mr-primary);
+    color: var(--mr-primary);
+}
+
+/* Edit overlay (plugin styles it inline) */
+#icy-order-edit-overlay {
+    backdrop-filter: blur(2px);
+}
+
+#icy-order-edit-overlay #car-parts-order-form {
+    margin: 0 !important;
+}

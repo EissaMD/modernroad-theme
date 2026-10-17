@@ -1,0 +1,239 @@
+/*
+ * The icycode-b2b order forms (car parts, tires/batteries, any product).
+ * Their markup is Bootstrap and loads Bootstrap's CSS inside the page body,
+ * after this file, so every rule is scoped by the form's ID to win.
+ */
+
+:is(#car-parts-order-form, #car-order-form, #car-products-order-form) {
+    max-width: none;
+    margin: 0 0 24px !important;
+    /* The card pads its content; the header bar below bleeds to the edges */
+    padding: 0 24px 24px !important;
+    overflow: hidden;
+    border: 1px solid var(--mr-border) !important;
+    border-radius: var(--mr-radius) !important;
+    background: var(--mr-surface) !important;
+    box-shadow: var(--mr-shadow);
+    color: var(--mr-text);
+}
+
+/* ---- Header (replaces the red inline-styled bar) ---- */
+:is(#car-parts-order-form, #car-order-form, #car-products-order-form) > h3 {
+    margin: 0 -24px 20px !important;
+    padding: 18px 24px !important;
+    border-bottom: 1px solid var(--mr-border);
+    border-top: 4px solid var(--mr-primary);
+    background: var(--mr-surface) !important;
+    color: var(--mr-text) !important;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: start !important;
+}
+
+:is(#car-parts-order-form, #car-order-form, #car-products-order-form) h5 {
+    margin: 20px 0 10px !important;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--mr-text);
+}
+
+/* ---- Fields ---- */
+:is(#car-parts-order-form, #car-order-form, #car-products-order-form) .form-label {
+    margin-bottom: 6px;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--mr-text);
+}
+
+:is(#car-parts-order-form, #car-order-form, #car-products-order-form) :is(.form-control, .form-select) {
+    height: 46px;
+    min-height: 46px;
+    padding: 10px 14px;
+    border: 1px solid var(--mr-border);
+    border-radius: var(--mr-radius-sm);
+    background-color: var(--mr-surface);
+    color: var(--mr-text);
+    font-size: 1rem;
+    box-shadow: none;
+}
+
+:is(#car-parts-order-form, #car-order-form, #car-products-order-form) .form-select {
+    background-position: left .75rem center;
+    padding-left: 2.25rem;
+}
+
+:is(#car-parts-order-form, #car-order-form, #car-products-order-form) :is(.form-control, .form-select):focus {
+    border-color: var(--mr-primary);
+    box-shadow: 0 0 0 3px var(--mr-primary-soft);
+}
+
+:is(#car-parts-order-form, #car-order-form, #car-products-order-form) input[type="file"].form-control {
+    padding: 9px 12px;
+    font-size: .9rem;
+}
+
+/*
+ * Searchable car / plate pickers (Tom Select, tire form). The wrapper takes
+ * the select's .form-select look; the inner control holds the text and the
+ * search input.
+ */
+#car-order-form .ts-wrapper.form-select {
+    display: flex;
+    padding: 0 !important;
+}
+
+#car-order-form .ts-wrapper .ts-control {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    padding: 0 14px;
+    padding-left: 2.25rem; /* room for the arrow (RTL: arrow on the left) */
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: var(--mr-text);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#car-order-form .ts-wrapper .ts-control input {
+    color: var(--mr-text);
+    font-size: 1rem;
+}
+
+#car-order-form .ts-wrapper .ts-control input::placeholder {
+    color: var(--mr-text-muted);
+}
+
+#car-order-form .ts-wrapper.focus {
+    border-color: var(--mr-primary);
+    box-shadow: 0 0 0 3px var(--mr-primary-soft);
+}
+
+#car-order-form .ts-dropdown {
+    margin-top: 4px;
+    overflow: hidden;
+    border: 1px solid var(--mr-border);
+    border-radius: var(--mr-radius-sm);
+    box-shadow: 0 8px 24px rgba(16, 24, 40, .12);
+    font-size: 1rem;
+}
+
+#car-order-form .ts-dropdown .option {
+    padding: 10px 14px;
+}
+
+#car-order-form .ts-dropdown .option.active {
+    background: var(--mr-primary-soft);
+    color: var(--mr-primary);
+}
+
+#car-order-form .ts-dropdown .option.selected {
+    font-weight: 700;
+}
+
+#car-order-form .ts-dropdown .no-results {
+    padding: 10px 14px;
+    color: var(--mr-text-muted);
+}
+
+/* ---- Item rows (parts / tires / batteries / products) ---- */
+:is(#car-parts-order-form, #car-order-form, #car-products-order-form) :is(.part-row, .tire-row, .battery-row, .product-row) {
+    margin: 0 0 10px !important;
+    padding: 14px !important;
+    border: 1px solid var(--mr-border) !important;
+    border-radius: var(--mr-radius-sm) !important;
+    background: var(--mr-surface-alt);
+}
+
+/* ---- Buttons ---- */
+:is(#car-parts-order-form, #car-order-form, #car-products-order-form) .btn {
+    min-height: 44px;
+    padding: 9px 20px;
+    border-radius: var(--mr-radius-sm);
+    font-weight: 600;
+}
+
+/* "Add item" buttons: a full-width dashed row under the items, so the
+   submit button sits alone on its own line below */
+:is(#add-part, #add-product, #add-tire, #add-battery).btn-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin: 0 0 24px !important;
+    border: 1px dashed #c4c9d1;
+    background: var(--mr-surface);
+    color: var(--mr-text-muted);
+}
+
+:is(#add-part, #add-product, #add-tire, #add-battery).btn-secondary::before {
+    content: "+";
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1;
+}
+
+/* Dimmed when the plugin disables it (row limit reached) */
+:is(#add-part, #add-product, #add-tire, #add-battery).btn-secondary:disabled {
+    opacity: .5;
+}
+
+:is(#car-parts-order-form, #car-order-form, #car-products-order-form) .btn-secondary:hover,
+:is(#car-parts-order-form, #car-order-form, #car-products-order-form) .btn-secondary:focus {
+    border-color: var(--mr-primary);
+    background: var(--mr-primary-soft);
+    color: var(--mr-primary);
+}
+
+/* Remove-row buttons */
+/* Square, same height as the fields */
+:is(#car-parts-order-form, #car-order-form, #car-products-order-form) .btn-danger {
+    width: 46px;
+    min-width: 46px;
+    height: 46px;
+    padding: 0;
+    border: 1px solid var(--mr-border);
+    background: var(--mr-surface);
+    color: var(--mr-primary);
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+:is(#car-parts-order-form, #car-order-form, #car-products-order-form) .btn-danger:hover {
+    border-color: var(--mr-primary);
+    background: var(--mr-primary);
+    color: #fff;
+}
+
+/* Submit (the plugin colours it with an inline style) */
+:is(#car-parts-order-form, #car-order-form, #car-products-order-form) button[type="submit"] {
+    min-width: 180px;
+    border: 0;
+    background: var(--mr-primary) !important;
+    color: #fff !important;
+}
+
+:is(#car-parts-order-form, #car-order-form, #car-products-order-form) button[type="submit"]:hover,
+:is(#car-parts-order-form, #car-order-form, #car-products-order-form) button[type="submit"]:focus {
+    background: var(--mr-primary-dark) !important;
+}
+
+@media (max-width: 640px) {
+    :is(#car-parts-order-form, #car-order-form, #car-products-order-form) {
+        padding: 0 16px 16px !important;
+    }
+
+    :is(#car-parts-order-form, #car-order-form, #car-products-order-form) > h3 {
+        margin: 0 -16px 16px !important;
+        padding: 14px 16px !important;
+    }
+
+    :is(#car-parts-order-form, #car-order-form, #car-products-order-form) button[type="submit"] {
+        width: 100%;
+    }
+}

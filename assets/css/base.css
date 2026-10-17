@@ -1,0 +1,203 @@
+/*
+ * Design tokens and shared components. Page files in pages/ build on these.
+ * Components are prefixed "mr-" so they don't clash with Bootstrap or WooCommerce.
+ */
+
+:root {
+    --mr-primary: #c00404;
+    --mr-primary-dark: #8f0303;
+    --mr-primary-soft: #fdf0f0;
+    --mr-success: #1f8a4c;
+    --mr-success-soft: #eaf7ef;
+    --mr-warning: #b26a00;
+    --mr-warning-soft: #fff6e5;
+    --mr-info: #1d5fa8;
+    --mr-info-soft: #eaf2fb;
+
+    --mr-text: #1f2328;
+    --mr-text-muted: #6b7280;
+    --mr-border: #e5e7eb;
+    --mr-surface: #ffffff;
+    --mr-surface-alt: #f7f8fa;
+
+    --mr-radius: 12px;
+    --mr-radius-sm: 8px;
+    --mr-shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 4px 12px rgba(16, 24, 40, .06);
+    --mr-gap: 20px;
+}
+
+/* ---- Card ---- */
+.mr-card {
+    background: var(--mr-surface);
+    border: 1px solid var(--mr-border);
+    border-radius: var(--mr-radius);
+    box-shadow: var(--mr-shadow);
+    padding: 20px 24px;
+}
+
+.mr-card__title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--mr-border);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--mr-text);
+}
+
+.mr-card__title svg {
+    flex: none;
+    color: var(--mr-primary);
+}
+
+/* ---- Info grid (label / value pairs) ---- */
+.mr-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 0;
+}
+
+.mr-info-grid__item {
+    background: var(--mr-surface-alt);
+    border-radius: var(--mr-radius-sm);
+    padding: 10px 14px;
+    min-width: 0;
+}
+
+.mr-info-grid dt {
+    margin: 0 0 4px;
+    font-size: .8rem;
+    font-weight: 500;
+    color: var(--mr-text-muted);
+}
+
+.mr-info-grid dd {
+    margin: 0;
+    font-weight: 700;
+    color: var(--mr-text);
+    overflow-wrap: anywhere;
+}
+
+.mr-info-grid--compact {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 8px;
+}
+
+.mr-info-grid--compact .mr-info-grid__item {
+    padding: 8px 10px;
+}
+
+/* ---- Badge ---- */
+.mr-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 999px;
+    font-size: .85rem;
+    font-weight: 700;
+    background: var(--mr-warning-soft);
+    color: var(--mr-warning);
+}
+
+.mr-badge--success {
+    background: var(--mr-success-soft);
+    color: var(--mr-success);
+}
+
+.mr-badge--info {
+    background: var(--mr-info-soft);
+    color: var(--mr-info);
+}
+
+.mr-badge--danger {
+    background: var(--mr-primary-soft);
+    color: var(--mr-primary);
+}
+
+/* ---- Page header (MR_ pages print their own heading) ---- */
+.mr-page-header {
+    margin: 0 0 20px;
+}
+
+.mr-page-header__title {
+    margin: 0 0 4px;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--mr-text);
+}
+
+.mr-page-header__text {
+    margin: 0;
+    color: var(--mr-text-muted);
+}
+
+/* ---- Buttons ---- */
+.mr-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border: 1px solid var(--mr-border);
+    border-radius: var(--mr-radius-sm);
+    background: var(--mr-surface);
+    color: var(--mr-text);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color .15s, border-color .15s, color .15s;
+}
+
+.mr-btn:hover,
+.mr-btn:focus {
+    border-color: var(--mr-primary);
+    color: var(--mr-primary);
+}
+
+.mr-btn--primary {
+    background: var(--mr-primary);
+    border-color: var(--mr-primary);
+    color: #fff;
+}
+
+.mr-btn--primary:hover,
+.mr-btn--primary:focus {
+    background: var(--mr-primary-dark);
+    border-color: var(--mr-primary-dark);
+    color: #fff;
+}
+
+/* ---- Table ---- */
+.mr-table {
+    width: 100%;
+    margin: 0;
+    border: 0;
+    border-collapse: collapse;
+}
+
+.mr-table th,
+.mr-table td {
+    padding: 12px 8px;
+    border: 0;
+    border-bottom: 1px solid var(--mr-border);
+    background: none;
+    text-align: start;
+    vertical-align: top;
+}
+
+.mr-table thead th {
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--mr-text-muted);
+}
+
+.mr-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.mr-table .mr-table__num {
+    width: 1%;
+    white-space: nowrap;
+    text-align: center;
+}

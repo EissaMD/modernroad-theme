@@ -1,0 +1,256 @@
+/*
+ * Order sections shared by the thank-you page and My Account → view order.
+ * Markup in template-parts/order-details.php and templates/woocommerce/myaccount/view-order.php.
+ */
+
+/* ---- Items ---- */
+.mr-order-items__product {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mr-order-items__thumb {
+    flex: none;
+    display: block;
+    width: 56px;
+    height: 56px;
+    overflow: hidden;
+    border: 1px solid var(--mr-border);
+    border-radius: var(--mr-radius-sm);
+    background: var(--mr-surface-alt);
+}
+
+.mr-order-items__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mr-order-items__name {
+    display: block;
+    font-weight: 600;
+}
+
+.mr-order-items .wc-item-meta {
+    margin: 6px 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: .85rem;
+    color: var(--mr-text-muted);
+}
+
+.mr-order-items .wc-item-meta p {
+    display: inline;
+    margin: 0;
+}
+
+.mr-order-items tfoot th,
+.mr-order-items tfoot td {
+    border-bottom: 0;
+    font-weight: 600;
+    color: var(--mr-text-muted);
+}
+
+.mr-order-items tfoot td {
+    color: var(--mr-text);
+}
+
+.mr-order-items tfoot tr:first-child th,
+.mr-order-items tfoot tr:first-child td {
+    border-top: 2px solid var(--mr-border);
+}
+
+.mr-order-items tfoot .mr-order-items__total--order_total th,
+.mr-order-items tfoot .mr-order-items__total--order_total td {
+    border-top: 1px solid var(--mr-border);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--mr-text);
+}
+
+.mr-order-note {
+    margin-top: 16px;
+    padding: 12px 14px;
+    border-radius: var(--mr-radius-sm);
+    background: var(--mr-surface-alt);
+}
+
+/* ---- B2BKing approve / reject box ---- */
+.mr-order-approval {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 20px;
+    margin-top: 20px;
+    padding: 16px 18px;
+    border: 1px solid #f3dcb0;
+    border-radius: var(--mr-radius-sm);
+    background: var(--mr-warning-soft);
+    color: var(--mr-text);
+    font-weight: 600;
+}
+
+.mr-order-approval br {
+    display: none;
+}
+
+.mr-order-approval .b2bking_order_approve_reject_container {
+    display: flex;
+    gap: 10px;
+}
+
+.mr-order-approval a.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 110px;
+    min-height: 42px;
+    margin: 0;
+    padding: 8px 20px;
+    border: 1px solid var(--mr-border);
+    border-radius: var(--mr-radius-sm);
+    background: var(--mr-surface);
+    color: var(--mr-text);
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.mr-order-approval a.button:hover {
+    border-color: var(--mr-primary);
+    color: var(--mr-primary);
+}
+
+.mr-order-approval #b2bking_approve_order {
+    border-color: var(--mr-success);
+    background: var(--mr-success);
+    color: #fff;
+}
+
+.mr-order-approval #b2bking_approve_order:hover {
+    filter: brightness(.92);
+    color: #fff;
+}
+
+/* ---- Addresses ---- */
+.mr-order-addresses {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--mr-gap);
+}
+
+.mr-order-addresses address {
+    margin: 0;
+    font-style: normal;
+    line-height: 1.8;
+    color: var(--mr-text);
+    overflow-wrap: anywhere;
+}
+
+/* ---- View order (My Account) ---- */
+.mr-order {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mr-gap);
+}
+
+/* The account content panel is already a card; order sections bring their own */
+.mr-account__content:has(> .mr-order) {
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+}
+
+.mr-order-summary__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.mr-order-summary__title {
+    margin: 0 !important;
+    font-size: 1.35rem !important;
+    font-weight: 700;
+}
+
+.mr-order-summary .mr-badge {
+    font-size: .9rem;
+}
+
+.mr-order-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--mr-text-muted);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.mr-order-back:hover {
+    color: var(--mr-primary);
+}
+
+/* Order updates (customer notes) */
+.mr-order-updates {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.mr-order-updates li {
+    position: relative;
+    padding: 0 0 16px;
+    padding-inline-start: 22px;
+    border-inline-start: 2px solid var(--mr-border);
+}
+
+.mr-order-updates li:last-child {
+    padding-bottom: 0;
+}
+
+.mr-order-updates li::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: -7px;
+    top: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--mr-primary);
+}
+
+.mr-order-updates__date {
+    margin: 0 0 4px;
+    font-size: .82rem;
+    color: var(--mr-text-muted);
+}
+
+.mr-order-updates__text p {
+    margin: 0;
+}
+
+@media (max-width: 640px) {
+    .mr-order-addresses {
+        grid-template-columns: 1fr;
+    }
+
+    .mr-order .mr-card,
+    .mr-ty .mr-card {
+        padding: 16px;
+    }
+
+    .mr-order-approval {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .mr-order-approval .b2bking_order_approve_reject_container a.button {
+        flex: 1;
+    }
+}
