@@ -1,4 +1,4 @@
-/* Orders report (MR_Orders) — [IcyCode_orders_table] from icycode-b2b */
+/* Orders report (MR_Orders) — [hamah_orders_table] from icycode-b2b */
 
 .mr-page--orders .mr-card {
     padding: 20px;
@@ -54,10 +54,10 @@
 }
 
 /* Edit overlay (plugin styles it inline) */
-#icy-order-edit-overlay {
+#hamah-order-edit-overlay {
     backdrop-filter: blur(2px);
 }
 
-#icy-order-edit-overlay #car-parts-order-form {
+#hamah-order-edit-overlay #car-parts-order-form {
     margin: 0 !important;
 }

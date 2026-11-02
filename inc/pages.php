@@ -48,7 +48,7 @@ function modernroad_managed_pages() {
         'orders' => [
             'title'   => 'MR_Orders',
             'slug'    => 'my-orders',
-            'content' => '[IcyCode_orders_table]',
+            'content' => '[hamah_orders_table]',
             'menu'    => 'الطلبات',
             'heading' => 'الطلبات',
             'intro'   => 'جميع الطلبات وحالتها. اضغط على رقم الطلب لعرض تفاصيله.',
@@ -57,7 +57,7 @@ function modernroad_managed_pages() {
         'car-report' => [
             'title'   => 'MR_CarReport',
             'slug'    => 'car-report',
-            'content' => '[IcyCode_car_report]',
+            'content' => '[hamah_car_report]',
             'menu'    => 'تقرير السيارات',
             'visible' => 'modernroad_user_has_car_report',
         ],

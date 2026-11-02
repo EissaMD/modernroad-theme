@@ -4,7 +4,7 @@
  *
  * Renders the order summary, vehicle info, items and addresses itself, so the
  * default order details table is removed from woocommerce_thankyou below.
- * Other woocommerce_thankyou callbacks (car limits, B2BKing) still run.
+ * Other woocommerce_thankyou callbacks (B2BKing) still run.
  *
  * @see https://woocommerce.com/document/template-structure/
  * @package WooCommerce\Templates
@@ -21,6 +21,15 @@ defined('ABSPATH') || exit;
     <?php if ($order) :
 
         do_action('woocommerce_before_thankyou', $order->get_id());
+
+        // Run these before the status badge: B2BKing moves approval orders to
+        // "waiting for approval" here. Their output is printed further down.
+        // Details are rendered below, so the default table is removed.
+        remove_action('woocommerce_thankyou', 'woocommerce_order_details_table', 10);
+        ob_start();
+        do_action('woocommerce_thankyou', $order->get_id());
+        $thankyou_output = ob_get_clean();
+        $order = wc_get_order($order->get_id());
 
         $sees_prices = modernroad_user_sees_prices();
         ?>
@@ -86,11 +95,7 @@ defined('ABSPATH') || exit;
 
         <?php get_template_part('template-parts/order-details', null, ['order' => $order]); ?>
 
-        <?php
-        // Details are rendered above; keep the other thankyou callbacks running
-        remove_action('woocommerce_thankyou', 'woocommerce_order_details_table', 10);
-        do_action('woocommerce_thankyou', $order->get_id());
-        ?>
+        <?php echo $thankyou_output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- callback output ?>
 
     <?php else : ?>
 
