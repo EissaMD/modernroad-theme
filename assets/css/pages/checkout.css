@@ -277,6 +277,12 @@
     list-style: none;
 }
 
+/* B2B customers never pick a payment method: the one B2BKing offers (Company
+   Credit or Pending Company Approval) stays selected but is not shown. */
+.mr-checkout #payment ul.payment_methods {
+    display: none;
+}
+
 .mr-checkout #payment ul.payment_methods li {
     margin: 0;
     padding: 12px 14px;
