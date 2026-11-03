@@ -70,10 +70,10 @@
 }
 
 .mr-order-note {
-    margin-top: 16px;
-    padding: 12px 14px;
-    border-radius: var(--mr-radius-sm);
-    background: var(--mr-surface-alt);
+    margin: 0;
+    line-height: 1.8;
+    color: var(--mr-text);
+    overflow-wrap: anywhere;
 }
 
 /* ---- B2BKing approve / reject box ---- */

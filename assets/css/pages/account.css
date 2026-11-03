@@ -161,6 +161,269 @@
     color: var(--mr-text-muted);
 }
 
+/* ---- My team ---- */
+.mr-account__content .mr-team__title {
+    margin: 0;
+}
+
+.mr-team__summary {
+    margin: 2px 0 16px;
+    color: var(--mr-text-muted);
+}
+
+.mr-team__add {
+    margin-bottom: 16px;
+}
+
+.mr-team__add > summary {
+    width: fit-content;
+    cursor: pointer;
+    list-style: none;
+}
+
+.mr-team__add > summary::-webkit-details-marker,
+.mr-team__row::-webkit-details-marker {
+    display: none;
+}
+
+.mr-team__add[open] > summary {
+    margin-bottom: 12px;
+}
+
+.mr-team__add .mr-team__form {
+    padding: 16px;
+    border: 1px solid var(--mr-border);
+    border-radius: var(--mr-radius-sm);
+    background: var(--mr-surface-alt);
+}
+
+.mr-team__inputs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 16px;
+}
+
+.mr-team__inputs p {
+    margin: 0 0 14px;
+}
+
+.mr-team__search {
+    margin-bottom: 12px;
+}
+
+.mr-team__list {
+    border: 1px solid var(--mr-border);
+    border-radius: var(--mr-radius-sm);
+    overflow: hidden;
+}
+
+.mr-team__member + .mr-team__member {
+    border-top: 1px solid var(--mr-border);
+}
+
+.mr-team__row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    cursor: pointer;
+    list-style: none;
+    transition: background-color .15s;
+}
+
+.mr-team__row:hover,
+.mr-team__member[open] > .mr-team__row {
+    background: var(--mr-surface-alt);
+}
+
+.mr-team__row::after {
+    content: "";
+    flex: none;
+    width: 8px;
+    height: 8px;
+    margin-inline-start: 4px;
+    border-inline-end: 2px solid var(--mr-text-muted);
+    border-bottom: 2px solid var(--mr-text-muted);
+    transform: rotate(45deg);
+    transition: transform .15s;
+}
+
+.mr-team__member[open] > .mr-team__row::after {
+    transform: rotate(-135deg);
+}
+
+.mr-team__avatar {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--mr-primary-soft);
+    color: var(--mr-primary);
+    font-weight: 700;
+}
+
+.mr-team__member.is-inactive .mr-team__avatar {
+    background: var(--mr-surface-alt);
+    color: var(--mr-text-muted);
+}
+
+.mr-team__who {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.mr-team__name {
+    font-weight: 700;
+    color: var(--mr-text);
+    overflow-wrap: anywhere;
+}
+
+.mr-team__login {
+    align-self: flex-end;
+    font-size: .8rem;
+    color: var(--mr-text-muted);
+    overflow-wrap: anywhere;
+}
+
+.mr-team__counts {
+    flex: none;
+    font-size: .85rem;
+    color: var(--mr-text-muted);
+}
+
+.mr-team__member .mr-team__form {
+    padding: 16px 14px;
+    border-top: 1px solid var(--mr-border);
+}
+
+.mr-team__access {
+    display: grid;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.mr-account .mr-team__access fieldset {
+    position: relative;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/* float: Bootstrap floats legends, and the toggle stops its clearing rule reaching the chips */
+.mr-account .mr-team__access legend {
+    float: none;
+    width: auto;
+    margin-bottom: 8px;
+    padding: 0;
+    font-size: .9rem;
+}
+
+.mr-team__toggle {
+    position: absolute;
+    top: 0;
+    inset-inline-end: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--mr-primary);
+    font-size: .85rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.mr-team__chips {
+    display: flex;
+    clear: both;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.mr-account label.mr-team__chip {
+    position: relative;
+    margin: 0;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.mr-team__chip input {
+    position: absolute;
+    opacity: 0;
+}
+
+.mr-team__chip span {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid var(--mr-border);
+    border-radius: 999px;
+    background: var(--mr-surface);
+    color: var(--mr-text-muted);
+    font-size: .88rem;
+    white-space: nowrap;
+    transition: background-color .15s, border-color .15s, color .15s;
+}
+
+.mr-team__chip:hover span {
+    border-color: var(--mr-primary);
+}
+
+.mr-team__chip input:checked + span {
+    border-color: var(--mr-primary);
+    background: var(--mr-primary-soft);
+    color: var(--mr-primary);
+    font-weight: 600;
+}
+
+.mr-team__chip input:focus-visible + span {
+    outline: 2px solid var(--mr-primary);
+    outline-offset: 2px;
+}
+
+.mr-team__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mr-account label.mr-team__status {
+    margin: 0;
+}
+
+.mr-account .mr-team__actions select {
+    width: auto;
+    min-width: 130px;
+}
+
+.mr-team__actions .mr-btn {
+    margin-inline-start: auto;
+}
+
+.mr-team__none {
+    margin: 12px 0 0;
+    color: var(--mr-text-muted);
+}
+
+@media (max-width: 640px) {
+    .mr-team__inputs {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .mr-team__row {
+        flex-wrap: wrap;
+    }
+
+    .mr-team__counts {
+        order: 5;
+        width: 100%;
+        padding-inline-start: 50px;
+    }
+}
+
 /* ---- Forms (addresses, account details) ---- */
 /* !important: WooCommerce's ".woocommerce form .form-row-first/last" (47%, float)
    is more specific; the grid handles columns here */

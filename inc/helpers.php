@@ -43,7 +43,11 @@ function modernroad_user_sees_prices() {
 
 /** B2BKing customer group name of a user, or ''. */
 function modernroad_user_group_name($user_id = 0) {
-    $group_id = get_user_meta($user_id ?: get_current_user_id(), 'b2bking_customergroup', true);
+    $user_id = $user_id ?: get_current_user_id();
+    if (class_exists('Hamah\B2B\Support\Membership')) {
+        return Hamah\B2B\Support\Membership::customer_name_of($user_id);
+    }
+    $group_id = get_user_meta($user_id, 'b2bking_customergroup', true);
     return $group_id && is_numeric($group_id) ? get_the_title((int) $group_id) : '';
 }
 

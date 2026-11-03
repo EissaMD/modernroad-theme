@@ -103,13 +103,6 @@ if ($car) :
         <?php endif; ?>
     </table>
 
-    <?php if ($order->get_customer_note()) : ?>
-        <div class="mr-order-note">
-            <strong><?php esc_html_e('Note:', 'woocommerce'); ?></strong>
-            <?php echo wp_kses(nl2br(wptexturize($order->get_customer_note())), []); ?>
-        </div>
-    <?php endif; ?>
-
     <?php
     // B2BKing prints its approve/reject box here
     ob_start();
@@ -122,25 +115,16 @@ if ($car) :
 </section>
 
 <?php
-$shipping = $order->get_formatted_shipping_address();
-$billing  = $order->get_formatted_billing_address();
-if ($shipping || $billing) :
+// New orders may have no shipping address: the billing one holds the same details
+$address = $order->get_formatted_shipping_address() ?: $order->get_formatted_billing_address();
+$note    = $order->get_customer_note();
+if ($address || $note) :
     ?>
     <div class="mr-order-addresses">
-        <?php if ($shipping) : ?>
+        <?php if ($address) : ?>
             <section class="mr-card">
-                <h2 class="mr-card__title"><?php echo modernroad_icon('pin'); ?><?php esc_html_e('Shipping address', 'woocommerce'); ?></h2>
-                <address><?php echo wp_kses_post($shipping); ?>
-                    <?php if ($order->get_shipping_phone()) : ?>
-                        <br><?php echo esc_html($order->get_shipping_phone()); ?>
-                    <?php endif; ?>
-                </address>
-            </section>
-        <?php endif; ?>
-        <?php if ($billing) : ?>
-            <section class="mr-card">
-                <h2 class="mr-card__title"><?php echo modernroad_icon('file'); ?><?php esc_html_e('Billing address', 'woocommerce'); ?></h2>
-                <address><?php echo wp_kses_post($billing); ?>
+                <h2 class="mr-card__title"><?php echo modernroad_icon('pin'); ?>عنوان التوصيل</h2>
+                <address><?php echo wp_kses_post($address); ?>
                     <?php if ($order->get_billing_phone()) : ?>
                         <br><?php echo esc_html($order->get_billing_phone()); ?>
                     <?php endif; ?>
@@ -148,6 +132,12 @@ if ($shipping || $billing) :
                         <br><?php echo esc_html($order->get_billing_email()); ?>
                     <?php endif; ?>
                 </address>
+            </section>
+        <?php endif; ?>
+        <?php if ($note) : ?>
+            <section class="mr-card">
+                <h2 class="mr-card__title"><?php echo modernroad_icon('file'); ?>ملاحظات الطلب</h2>
+                <p class="mr-order-note"><?php echo nl2br(esc_html($note)); ?></p>
             </section>
         <?php endif; ?>
     </div>
