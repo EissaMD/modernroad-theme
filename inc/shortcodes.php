@@ -77,7 +77,7 @@ function modernroad_home_shortcode() {
         'text'  => 'البيانات والعناوين وكلمة المرور',
     ];
 
-    // Same orders the orders table shows: this account plus its subaccounts (B2BKing)
+    // Same orders the orders table shows: this account plus its subaccounts
     $customer_ids = class_exists('MyOrdersTable') ? MyOrdersTable::get_subaccounts_list($user->ID) : [$user->ID];
 
     $orders = function_exists('wc_get_orders') ? wc_get_orders([

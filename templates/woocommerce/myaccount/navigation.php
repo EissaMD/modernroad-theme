@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// Endpoints added by plugins (B2BKing etc.) get the default icon
+// Endpoints added by plugins get the default icon
 $icons = [
     'dashboard'       => 'home',
     'orders'          => 'box',

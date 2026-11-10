@@ -41,10 +41,13 @@ function modernroad_user_sees_prices() {
     return (bool) get_user_meta(get_current_user_id(), 'b2b_show_price', true);
 }
 
-/** B2BKing customer group name of a user, or ''. */
+/** Customer group name of a user from the Hamah B2B plugin, or ''. */
 function modernroad_user_group_name($user_id = 0) {
-    $group_id = get_user_meta($user_id ?: get_current_user_id(), 'b2bking_customergroup', true);
-    return $group_id && is_numeric($group_id) ? get_the_title((int) $group_id) : '';
+    if (!class_exists('\Hamah\B2B\Support\Accounts')) {
+        return '';
+    }
+    $user_id = $user_id ?: get_current_user_id();
+    return \Hamah\B2B\Support\Accounts::group_name(\Hamah\B2B\Support\Accounts::group_id($user_id));
 }
 
 /** Order status as an mr-badge, coloured by how far along the order is. */

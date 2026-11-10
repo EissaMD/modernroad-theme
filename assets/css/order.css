@@ -76,7 +76,7 @@
     background: var(--mr-surface-alt);
 }
 
-/* ---- B2BKing approve / reject box ---- */
+/* ---- Approve / reject box (Hamah B2B) ---- */
 .mr-order-approval {
     display: flex;
     flex-wrap: wrap;
@@ -92,16 +92,16 @@
     font-weight: 600;
 }
 
-.mr-order-approval br {
-    display: none;
-}
-
-.mr-order-approval .b2bking_order_approve_reject_container {
+.mr-order-approval .hamah-approval__actions {
     display: flex;
     gap: 10px;
+    margin: 0;
 }
 
-.mr-order-approval a.button {
+.mr-order-approval .hamah-approval__btn {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: 1.4;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -118,19 +118,59 @@
     cursor: pointer;
 }
 
-.mr-order-approval a.button:hover {
+.mr-order-approval .hamah-approval__btn:hover {
     border-color: var(--mr-primary);
     color: var(--mr-primary);
 }
 
-.mr-order-approval #b2bking_approve_order {
+.mr-order-approval .hamah-approval__btn--approve {
     border-color: var(--mr-success);
     background: var(--mr-success);
     color: #fff;
 }
 
-.mr-order-approval #b2bking_approve_order:hover {
+.mr-order-approval .hamah-approval__btn--approve:hover {
     filter: brightness(.92);
+    color: #fff;
+}
+
+/* Reason row, revealed by "رفض" under the message and buttons */
+.mr-order-approval .hamah-approval__reason {
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding-top: 14px;
+    border-top: 1px solid #f3dcb0;
+}
+
+.mr-order-approval .hamah-approval__reason[hidden] {
+    display: none;
+}
+
+.mr-order-approval .hamah-approval__reason input {
+    flex: 1;
+    min-width: 200px;
+    min-height: 42px;
+    padding: 8px 12px;
+    border: 1px solid var(--mr-border);
+    border-radius: var(--mr-radius-sm);
+    background: var(--mr-surface);
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 400;
+}
+
+.mr-order-approval .hamah-approval__btn--reject {
+    border-color: var(--mr-danger, #c0392b);
+    background: var(--mr-danger, #c0392b);
+    color: #fff;
+}
+
+.mr-order-approval .hamah-approval__btn--reject:hover {
+    filter: brightness(.92);
+    border-color: var(--mr-danger, #c0392b);
     color: #fff;
 }
 
@@ -250,7 +290,7 @@
         align-items: stretch;
     }
 
-    .mr-order-approval .b2bking_order_approve_reject_container a.button {
+    .mr-order-approval .hamah-approval__btn {
         flex: 1;
     }
 }

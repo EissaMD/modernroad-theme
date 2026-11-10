@@ -111,7 +111,7 @@ if ($car) :
     <?php endif; ?>
 
     <?php
-    // B2BKing prints its approve/reject box here
+    // Hamah B2B prints its approve/reject box here
     ob_start();
     do_action('woocommerce_order_details_after_order_table', $order);
     $after_table = trim(ob_get_clean());
