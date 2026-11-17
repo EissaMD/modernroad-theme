@@ -122,33 +122,22 @@ if ($car) :
 </section>
 
 <?php
-$shipping = $order->get_formatted_shipping_address();
-$billing  = $order->get_formatted_billing_address();
-if ($shipping || $billing) :
+// The order's location (Hamah B2B saves it as the shipping address). No billing address.
+$location = modernroad_order_location($order);
+if ($location) :
     ?>
-    <div class="mr-order-addresses">
-        <?php if ($shipping) : ?>
-            <section class="mr-card">
-                <h2 class="mr-card__title"><?php echo modernroad_icon('pin'); ?><?php esc_html_e('Shipping address', 'woocommerce'); ?></h2>
-                <address><?php echo wp_kses_post($shipping); ?>
-                    <?php if ($order->get_shipping_phone()) : ?>
-                        <br><?php echo esc_html($order->get_shipping_phone()); ?>
-                    <?php endif; ?>
-                </address>
-            </section>
-        <?php endif; ?>
-        <?php if ($billing) : ?>
-            <section class="mr-card">
-                <h2 class="mr-card__title"><?php echo modernroad_icon('file'); ?><?php esc_html_e('Billing address', 'woocommerce'); ?></h2>
-                <address><?php echo wp_kses_post($billing); ?>
-                    <?php if ($order->get_billing_phone()) : ?>
-                        <br><?php echo esc_html($order->get_billing_phone()); ?>
-                    <?php endif; ?>
-                    <?php if ($order->get_billing_email()) : ?>
-                        <br><?php echo esc_html($order->get_billing_email()); ?>
-                    <?php endif; ?>
-                </address>
-            </section>
-        <?php endif; ?>
-    </div>
+    <section class="mr-card mr-order-location">
+        <h2 class="mr-card__title"><?php echo modernroad_icon('pin'); ?>الموقع</h2>
+        <p class="mr-order-location__line">
+            <?php if ($location['name'] !== '') : ?>
+                <span><?php echo modernroad_icon('user', 16); ?><?php echo esc_html($location['name']); ?></span>
+            <?php endif; ?>
+            <?php if ($location['phone'] !== '') : ?>
+                <a href="tel:<?php echo esc_attr(preg_replace('/[^0-9+]/', '', $location['phone'])); ?>"><?php echo modernroad_icon('phone', 16); ?><bdi dir="ltr"><?php echo esc_html($location['phone']); ?></bdi></a>
+            <?php endif; ?>
+            <?php if ($location['address'] !== '') : ?>
+                <span><?php echo modernroad_icon('pin', 16); ?><?php echo esc_html($location['address']); ?></span>
+            <?php endif; ?>
+        </p>
+    </section>
 <?php endif; ?>

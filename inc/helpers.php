@@ -81,6 +81,7 @@ function modernroad_icon($name, $size = 20) {
         'list'    => '<path d="M8 6h13M8 12h13M8 18h13"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/>',
         'car'     => '<path d="M5 17H3v-5l2-5h14l2 5v5h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M9 17h6M3 12h18"/>',
         'user'    => '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+        'phone'   => '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/>',
         'pin'     => '<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>',
         'logout'  => '<path d="M15 4h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4"/><path d="M10 17l-5-5 5-5M5 12h11"/>',
         'box'     => '<path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/>',
@@ -97,4 +98,13 @@ function modernroad_icon($name, $size = 20) {
         $size,
         $paths[$name] ?? $paths['dot']
     );
+}
+
+/**
+ * The order's location (المستلم، الجوال، العنوان في سطر واحد), from the Hamah
+ * B2B plugin; null when the order has none or the plugin is off.
+ */
+function modernroad_order_location($order) {
+    $class = 'Hamah\B2B\Frontend\DeliveryChoice';
+    return class_exists($class) && method_exists($class, 'order_location') ? $class::order_location($order) : null;
 }
