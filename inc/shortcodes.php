@@ -125,7 +125,7 @@ function modernroad_home_shortcode() {
                         <thead>
                             <tr>
                                 <th>رقم الطلب</th>
-                                <th>العميل</th>
+                                <th>منشئ الطلب</th>
                                 <th>التاريخ</th>
                                 <th>المركبة</th>
                                 <th>الحالة</th>
@@ -135,10 +135,14 @@ function modernroad_home_shortcode() {
                             <?php foreach ($orders as $order) :
                                 $car = class_exists('OrderCarInfo') ? OrderCarInfo::get_all($order) : [];
                                 $car_label = trim(($car['car_name'] ?? '') . ' ' . ($car['plate_no'] ?? ''));
+                                // The account that placed the order, never the billing name (can be "0 0")
+                                $creator = class_exists('\Hamah\B2B\Support\Accounts')
+                                    ? \Hamah\B2B\Support\Accounts::order_creator_name($order)
+                                    : $order->get_formatted_billing_full_name();
                                 ?>
                                 <tr>
                                     <td><strong>#<?php echo esc_html($order->get_order_number()); ?></strong></td>
-                                    <td><?php echo esc_html($order->get_formatted_billing_full_name() ?: '—'); ?></td>
+                                    <td><?php echo esc_html($creator ?: '—'); ?></td>
                                     <td><?php echo esc_html(wc_format_datetime($order->get_date_created())); ?></td>
                                     <td><?php echo esc_html($car_label ?: '—'); ?></td>
                                     <td><?php echo modernroad_status_badge($order->get_status()); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></td>
